@@ -1,0 +1,13 @@
+{
+  "id": "03-junior-vue-onsite-uah",
+  "note": "Synthetic posting. Salary in UAH, on-site.",
+  "text": "Junior Vue.js Developer\nCompany: Zephyr Web\n\nWe are an agency building marketing websites for local businesses. Looking for a Junior Vue.js Developer to grow with us.\n\nOn-site in Lviv (office near the city center).\nSalary: UAH 30,000-40,000 per month, depending on skills.\n\nWhat we expect:\n- Basic knowledge of Vue 3 and JavaScript\n- HTML, CSS, Tailwind\n- Ability to work with Figma designs\n- English at reading level\n\nNice to have: Nuxt, TypeScript.\n",
+  "expected": {
+    "title": "Junior Vue.js Developer",
+    "company": "Zephyr Web",
+    "seniority": "junior",
+    "workMode": "onsite",
+    "salary": { "min": 30000, "max": 40000, "currency": "UAH", "period": "month" },
+    "stack": ["Vue", "JavaScript", "Tailwind", "Figma", "Nuxt", "TypeScript"]
+  }
+}

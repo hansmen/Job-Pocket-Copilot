@@ -1,0 +1,13 @@
+{
+  "id": "06-vague-rockstar",
+  "note": "Synthetic posting. Vague, no seniority, no salary, no work mode: the parser must answer unknown/null, not guess.",
+  "text": "Rockstar Ninja Developer Wanted!!!\n\nWe are a fast-growing family of passionate people changing the world. We need someone who thrives under pressure, wears many hats and is ready to work hard and play hard.\n\nYou must know all modern technologies and be available 24/7.\n\nApply now!\n",
+  "expected": {
+    "title": "Rockstar Ninja Developer Wanted!!!",
+    "company": null,
+    "seniority": "unknown",
+    "workMode": "unknown",
+    "salary": null,
+    "stack": []
+  }
+}

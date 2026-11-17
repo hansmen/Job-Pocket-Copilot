@@ -1,0 +1,13 @@
+{
+  "id": "02-middle-fullstack-hybrid",
+  "note": "Synthetic posting. Hybrid, no salary, company named in prose only.",
+  "text": "Full-stack Engineer (Middle)\n\nNorthwind Labs is a small product studio working on logistics software. We are hiring a middle full-stack engineer to join a team of six.\n\nWork format: hybrid, 3 days per week in our Kyiv office.\n\nYou will:\n- Build features in React and Next.js\n- Design REST APIs in Node.js with NestJS\n- Work with PostgreSQL and write migrations\n\nYou have:\n- 3 years of commercial experience\n- Good knowledge of TypeScript\n- Docker basics\n- Experience with Jest\n\nWe offer a competitive salary, health insurance and a learning budget.\n",
+  "expected": {
+    "title": "Full-stack Engineer (Middle)",
+    "company": "Northwind Labs",
+    "seniority": "middle",
+    "workMode": "hybrid",
+    "salary": null,
+    "stack": ["React", "Next.js", "Node.js", "NestJS", "PostgreSQL", "TypeScript", "Docker", "Jest"]
+  }
+}

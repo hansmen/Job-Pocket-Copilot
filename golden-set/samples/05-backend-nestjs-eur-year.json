@@ -1,0 +1,13 @@
+{
+  "id": "05-backend-nestjs-eur-year",
+  "note": "Synthetic posting. Yearly salary in EUR, remote within the EU.",
+  "text": "Backend Developer (NestJS)\nCompany: Fjord Payments\n\nFjord Payments is a payment infrastructure startup. We are hiring a mid-level backend developer.\n\nRemote within the EU.\nCompensation: EUR 60,000-80,000 per year.\n\nStack: Node.js, NestJS, PostgreSQL, Prisma, AWS, Docker.\n\nRequirements:\n- 3-5 years of backend experience\n- Solid understanding of REST and databases\n- Experience with Stripe is a plus\n",
+  "expected": {
+    "title": "Backend Developer (NestJS)",
+    "company": "Fjord Payments",
+    "seniority": "middle",
+    "workMode": "remote",
+    "salary": { "min": 60000, "max": 80000, "currency": "EUR", "period": "year" },
+    "stack": ["Node.js", "NestJS", "PostgreSQL", "Prisma", "AWS", "Docker", "REST", "Stripe"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "08-ukrainian-language",
+  "note": "Synthetic posting written in Ukrainian. The parser must handle non-English postings. Field values stay normalized (enums in English); the title and company stay as written.",
+  "text": "Middle React Native розробник\nКомпанія: ТрекЛаб\n\nШукаємо Middle React Native розробника в команду мобільного застосунку для фітнесу.\n\nФормат: повністю віддалено.\nЗарплата: 3000–4000 USD на місяць.\n\nВимоги:\n- 3+ роки досвіду з React Native\n- TypeScript\n- Досвід з Firebase\n- Англійська B1+\n",
+  "expected": {
+    "title": "Middle React Native розробник",
+    "company": "ТрекЛаб",
+    "seniority": "middle",
+    "workMode": "remote",
+    "salary": { "min": 3000, "max": 4000, "currency": "USD", "period": "month" },
+    "stack": ["React Native", "TypeScript", "Firebase"]
+  }
+}

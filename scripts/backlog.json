@@ -1,0 +1,208 @@
+{
+  "milestones": [
+    { "title": "Stage 0: Foundation", "description": "Repository, environment, first run on a device, golden set, user research (Days 1-4)." },
+    { "title": "Stage 1: Local MVP", "description": "Offline tracker: add jobs, statuses, reminders, share extension, export (Days 5-21)." },
+    { "title": "Stage 2: Backend and AI", "description": "API, sync, AI job parsing, profile, resume tailoring (about weeks 4-8)." },
+    { "title": "Stage 3: Interview prep", "description": "Questions, rubric, history, voice, weak-spot map (about weeks 9-12)." },
+    { "title": "Stage 4: Web, integrations, launch", "description": "Web client, analytics, subscriptions, beta, public release (about weeks 13-17)." },
+    { "title": "Ideas", "description": "Not scheduled. Promote an idea only after real usage shows the need." }
+  ],
+  "labels": [
+    { "name": "task", "color": "0e8a16" },
+    { "name": "stage-0", "color": "c5def5" },
+    { "name": "stage-1", "color": "bfd4f2" },
+    { "name": "stage-2", "color": "d4c5f9" },
+    { "name": "stage-3", "color": "f9d0c4" },
+    { "name": "stage-4", "color": "fef2c0" },
+    { "name": "idea", "color": "ededed" },
+    { "name": "devlog", "color": "1d76db" },
+    { "name": "risk", "color": "d93f0b" }
+  ],
+  "issues": [
+    {
+      "stage": 0, "milestone": "Stage 0: Foundation", "labels": ["task", "stage-0", "devlog"],
+      "title": "Day 1: Repository and environment",
+      "body": "## Steps\n- [ ] Create a private GitHub repo, push the project\n- [ ] Run `./scripts/setup.sh`\n- [ ] Confirm CI is green on GitHub\n- [ ] Install missing tooling (Xcode, Android Studio, Docker)\n\n## Done when\n`pnpm --filter @jc/shared test` is green locally and in CI.\n\n## Devlog\nIntro episode: why I am building this and the plan."
+    },
+    {
+      "stage": 0, "milestone": "Stage 0: Foundation", "labels": ["task", "stage-0", "risk"],
+      "title": "Day 2: Mobile app running on a real phone",
+      "body": "## Steps\n- [ ] Run `./scripts/bootstrap-mobile.sh`\n- [ ] Merge `app.config.example.ts` into the Expo config, set your own bundle id / package\n- [ ] Build a dev build (`npx expo run:ios` or EAS) and run it on a physical device\n\n## Done when\nThe empty Jobs list opens on the phone.\n\n## Risks\nThe first native build can take long. Expo Go is not supported (see ADR 0003)."
+    },
+    {
+      "stage": 0, "milestone": "Stage 0: Foundation", "labels": ["task", "stage-0", "devlog"],
+      "title": "Day 3: Monitoring and your private golden set",
+      "body": "## Steps\n- [ ] Add Sentry, confirm a test error arrives (with PII scrubbing in `beforeSend`)\n- [ ] Create EAS profiles: development, preview\n- [ ] Collect 10 real postings into `golden-set/private/` (anonymized, labeled by hand)\n- [ ] Run `node golden-set/eval.mjs --dir golden-set/private`\n\n## Done when\nSentry shows the test event and you have a recorded baseline score."
+    },
+    {
+      "stage": 0, "milestone": "Stage 0: Foundation", "labels": ["task", "stage-0", "devlog"],
+      "title": "Day 4: User research and sketches",
+      "body": "## Steps\n- [ ] Send 5-10 interview requests (script in `docs/07-user-research.md`)\n- [ ] Sketch 5 screens: list, details, add, reminders, settings\n- [ ] Create a waitlist page (Tally / Carrd)\n\n## Done when\n5+ messages sent, sketches exist, waitlist link is live."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 5: Database and migrations",
+      "body": "## Steps\n- [ ] Drizzle migration applies on app start\n- [ ] Verify the tables via a debug screen or logs\n\n## Done when\nAfter an app restart the schema is in place with no errors."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 6: SqliteJobRepository",
+      "body": "## Steps\n- [ ] Wire `SqliteJobRepository` through `RepoProvider`\n- [ ] Verify create/list/get/delete via a temporary debug screen\n- [ ] Make sure `listJobs` is a single query, not N+1\n- [ ] Add repository tests (Jest + SQLite)\n\n## Done when\nData survives a restart; deletes are soft (row stays with `deletedAt`)."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 7: List and add screens",
+      "body": "## Steps\n- [ ] Empty state, form validation\n- [ ] Duplicate check by normalized URL\n\n## Done when\nYou add 5 jobs manually; a duplicate URL (with utm params) warns."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 8: Details screen and statuses",
+      "body": "## Steps\n- [ ] Status changes only through allowed transitions\n- [ ] History and notes\n- [ ] Tests for `syncFollowUp` with a fake repository\n\n## Done when\nAn invalid transition is impossible in the UI and shows a clear message."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1", "risk"],
+      "title": "Day 9: Reminders",
+      "body": "## Steps\n- [ ] Notification permission flow\n- [ ] Create follow-up when a job moves to Applied\n- [ ] Reschedule on app start\n- [ ] Temporary 'remind in 1 minute' debug mode\n\n## Done when\nA notification actually arrives on the phone.\n\n## Risks\niOS keeps only ~64 scheduled local notifications; verify `selectNotificationsToSchedule`."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1", "risk", "devlog"],
+      "title": "Day 10: Share extension (iOS)",
+      "body": "## Steps\n- [ ] Configure `expo-share-intent`\n- [ ] Accept URL and text from Safari / LinkedIn / DOU\n\n## Done when\nShare -> Job Copilot from Safari opens the add form with the URL.\n\n## Risks\nNeeds a dev build; does not work in Expo Go."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 11: Share (Android) and simple text parsing",
+      "body": "## Steps\n- [ ] Android intent filter\n- [ ] Use the first line of shared text as a title suggestion\n\n## Done when\nThe same flow works from Chrome on Android; the title is prefilled sensibly."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 12: Filters, search, kanban",
+      "body": "## Steps\n- [ ] Status filter and text search\n- [ ] Simple kanban (horizontal columns)\n\n## Done when\n30 test jobs filter without lag."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 13: Export, import, settings",
+      "body": "## Steps\n- [ ] Export JSON and CSV via the share sheet\n- [ ] Import JSON validated with `ExportBundleSchema`\n- [ ] Settings: follow-up delay, hour, skip weekends\n\n## Done when\nExport -> wipe data -> import restores everything."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1"],
+      "title": "Day 14: Quality and accessibility",
+      "body": "## Steps\n- [ ] Dark theme, uk/en localization\n- [ ] Error boundary, Sentry breadcrumbs\n- [ ] VoiceOver / TalkBack pass on the main screens\n\n## Done when\nNo unhandled crash on any screen; fonts scale."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1", "devlog"],
+      "title": "Days 15-20: Dogfooding week",
+      "body": "Use the app for real applications. No new features, bug fixes only.\n\n## Steps\n- [ ] Keep `docs/pain-log.md` up to date\n- [ ] At least 10 real jobs tracked\n\n## Done when\nThe pain log has real entries and you know what annoys you."
+    },
+    {
+      "stage": 1, "milestone": "Stage 1: Local MVP", "labels": ["task", "stage-1", "devlog"],
+      "title": "Day 21: Stage 1 retrospective",
+      "body": "## Steps\n- [ ] Retrospective (template in `docs/08-devlog-youtube.md`)\n- [ ] Internal TestFlight build\n- [ ] Check metrics: add-a-job under 20 s, export works, reminders fire\n- [ ] Decide the Stage 2 scope from the pain log\n\n## Done when\nStage 2 scope is decided from evidence, not assumptions."
+    },
+    {
+      "stage": 2, "milestone": "Stage 2: Backend and AI", "labels": ["task", "stage-2"],
+      "title": "Week 4: API foundation",
+      "body": "- [ ] NestJS runs against Postgres, first migration (`prisma migrate dev --name init`)\n- [ ] Firebase guard working with a real token\n- [ ] `/jobs` CRUD, OpenAPI at `/openapi.json`\n- [ ] Generate `packages/api-client`\n- [ ] e2e tests for `/health` and `/jobs`\n- [ ] Replace manual zod validation with DTOs (`nestjs-zod`)"
+    },
+    {
+      "stage": 2, "milestone": "Stage 2: Backend and AI", "labels": ["task", "stage-2", "risk"],
+      "title": "Week 5: Sync",
+      "body": "- [ ] API-backed `JobRepository` with a local cache\n- [ ] Outbox with idempotency keys\n- [ ] First-login migration of local data\n- [ ] Account deletion (DB rows + files)\n\n## Risks\nConflict handling; keep it to last-write-wins by `updatedAt`."
+    },
+    {
+      "stage": 2, "milestone": "Stage 2: Backend and AI", "labels": ["task", "stage-2", "risk"],
+      "title": "Week 6: AI job parsing",
+      "body": "- [ ] Real `LlmClient` implementation behind `LLM_PROVIDER`\n- [ ] Structured output validated with `ParsedJobSchema`, retry on invalid JSON\n- [ ] Cache by text hash + parser version\n- [ ] Daily limits and `AiUsage` accounting\n- [ ] Evals on the golden set (before/after)\n- [ ] Screenshot (vision) path\n\n## Done when\nParsing accuracy meets your chosen threshold on the golden set."
+    },
+    {
+      "stage": 2, "milestone": "Stage 2: Backend and AI", "labels": ["task", "stage-2"],
+      "title": "Week 7: Profile and job match",
+      "body": "- [ ] Import resume (PDF/DOCX) into a structured profile\n- [ ] User confirms and edits the profile\n- [ ] Match profile vs. job with references to profile lines"
+    },
+    {
+      "stage": 2, "milestone": "Stage 2: Backend and AI", "labels": ["task", "stage-2", "risk"],
+      "title": "Week 8: Resume tailoring",
+      "body": "- [ ] Suggested changes as a diff; accept/reject each change\n- [ ] Every change has a `sourceRef`; no source -> needs confirmation\n- [ ] PDF export and cover letter\n\n## Done when\nNo change ever introduces a fact missing from the profile."
+    },
+    {
+      "stage": 3, "milestone": "Stage 3: Interview prep", "labels": ["task", "stage-3"],
+      "title": "Week 9: Interview questions and rubric",
+      "body": "- [ ] Generate questions per job (behavioral, technical, English), text mode\n- [ ] Rubric scoring with JSON feedback\n- [ ] Rewritten answers use only the user's own facts"
+    },
+    {
+      "stage": 3, "milestone": "Stage 3: Interview prep", "labels": ["task", "stage-3"],
+      "title": "Week 10: Session history and repetition",
+      "body": "- [ ] Store sessions and turns\n- [ ] Re-practice questions that scored low"
+    },
+    {
+      "stage": 3, "milestone": "Stage 3: Interview prep", "labels": ["task", "stage-3", "risk"],
+      "title": "Week 11: Voice mode",
+      "body": "- [ ] Recording, STT, AI reply, optional TTS (push-to-talk first)\n- [ ] Pause / filler-word / pace metrics from STT timestamps\n- [ ] Cost per 15-minute session calculated before launch; minutes limit\n\n## Risks\nAudio session, Bluetooth headsets and interruptions (calls, Siri): test on real devices."
+    },
+    {
+      "stage": 3, "milestone": "Stage 3: Interview prep", "labels": ["task", "stage-3"],
+      "title": "Week 12: Weak-spot map and study plan",
+      "body": "- [ ] Aggregate weak spots across jobs and sessions\n- [ ] 1-2 week mini study plan (topics and exercises, no invented links)\n- [ ] Polish and device testing"
+    },
+    {
+      "stage": 4, "milestone": "Stage 4: Web, integrations, launch", "labels": ["task", "stage-4"],
+      "title": "Week 13: Web client (Next.js)",
+      "body": "- [ ] Login, job list, details, parsing\n- [ ] Reuse `packages/api-client` and shared zod schemas"
+    },
+    {
+      "stage": 4, "milestone": "Stage 4: Web, integrations, launch", "labels": ["task", "stage-4"],
+      "title": "Week 14: Resume editor and funnel analytics",
+      "body": "- [ ] Web resume editor\n- [ ] Funnel analytics: conversions between statuses, time per stage, response rate per resume version"
+    },
+    {
+      "stage": 4, "milestone": "Stage 4: Web, integrations, launch", "labels": ["task", "stage-4", "risk"],
+      "title": "Week 15: Recruiter emails and subscriptions",
+      "body": "- [ ] Forwarding address for recruiter emails (parse and suggest a status update)\n- [ ] RevenueCat (mobile) + Stripe (web); entitlements stored on the backend\n- [ ] AI limits per plan\n\n## Risks\nGmail restricted scopes may require Google verification; check current requirements first. Re-check store rules for web payments by region."
+    },
+    {
+      "stage": 4, "milestone": "Stage 4: Web, integrations, launch", "labels": ["task", "stage-4"],
+      "title": "Week 16: Closed beta",
+      "body": "- [ ] TestFlight + Google Play closed testing, 20-50 users\n- [ ] Feedback channel and a weekly review of feedback"
+    },
+    {
+      "stage": 4, "milestone": "Stage 4: Web, integrations, launch", "labels": ["task", "stage-4", "devlog"],
+      "title": "Week 17: Public release",
+      "body": "- [ ] Walk through `docs/09-release-checklist.md`\n- [ ] ASO, store listings, privacy labels\n- [ ] Launch post and devlog episode"
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: browser extension to save jobs from LinkedIn / DOU / Djinni",
+      "body": "Save a posting from the desktop browser into the same account. Only user-initiated saves (no crawling)."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: Telegram bot for quick adding and reminders",
+      "body": "Forward a posting to the bot; get follow-up reminders in Telegram."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: weekly digest",
+      "body": "What was done this week, what is waiting for a reply, what needs a follow-up."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: home screen widget with application statuses",
+      "body": "iOS and Android widgets showing counts per status and the next reminder."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: calendar integration for interviews",
+      "body": "Add interview slots to the calendar and create reminders automatically."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: compare resume versions by recruiter response",
+      "body": "Which resume version gets more replies? Needs enough data to be meaningful."
+    },
+    {
+      "stage": 5, "milestone": "Ideas", "labels": ["idea"],
+      "title": "Idea: mentor mode",
+      "body": "Let a mentor view progress and comment on answers. Needs a sharing and permissions model first."
+    }
+  ]
+}

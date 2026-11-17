@@ -1,0 +1,13 @@
+{
+  "id": "01-senior-rn-remote",
+  "note": "Synthetic posting. Clean structure, explicit salary.",
+  "text": "Senior React Native Developer\nCompany: Acme Mobile\n\nAcme Mobile builds a fitness tracking app used by 2M people. We are looking for a Senior React Native Developer to own our mobile client.\n\nLocation: Remote (Europe time zones)\nSalary: $5,000-7,000 per month\n\nRequirements:\n- 5+ years of mobile development, 3+ years with React Native\n- Strong TypeScript\n- Experience with Redux Toolkit or Zustand\n- Experience shipping to App Store and Google Play\n\nNice to have:\n- Native modules in Swift or Kotlin\n- Firebase, Sentry\n- Experience with Expo and EAS Build\n",
+  "expected": {
+    "title": "Senior React Native Developer",
+    "company": "Acme Mobile",
+    "seniority": "senior",
+    "workMode": "remote",
+    "salary": { "min": 5000, "max": 7000, "currency": "USD", "period": "month" },
+    "stack": ["React Native", "TypeScript", "Redux", "Zustand", "Swift", "Kotlin", "Firebase", "Sentry", "Expo"]
+  }
+}

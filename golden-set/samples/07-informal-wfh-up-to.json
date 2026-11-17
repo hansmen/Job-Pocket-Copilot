@@ -1,0 +1,13 @@
+{
+  "id": "07-informal-wfh-up-to",
+  "note": "Synthetic posting. Informal phrasing: company in the title after @, 'WFH' instead of remote, open-ended 'up to 4.5k USD' salary, the word 'lead' used as a verb (not the seniority).",
+  "text": "Senior React Native Engineer @ Brightloop\n\nBrightloop (Series A, 40 people) is building a language learning app.\n\n100% WFH, anywhere in UTC-1..UTC+3.\nUp to 4.5k USD net per month for the right person.\n\nYou'll lead the migration to the New Architecture, mentor two mid-level devs and work closely with design.\n\nMust: React Native, TypeScript, Reanimated. Bonus: Skia, Detox.\n",
+  "expected": {
+    "title": "Senior React Native Engineer",
+    "company": "Brightloop",
+    "seniority": "senior",
+    "workMode": "remote",
+    "salary": { "min": null, "max": 4500, "currency": "USD", "period": "month" },
+    "stack": ["React Native", "TypeScript", "Reanimated", "Skia", "Detox"]
+  }
+}
