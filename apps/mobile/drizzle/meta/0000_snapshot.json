@@ -81,10 +81,7 @@
       "indexes": {
         "events_application_idx": {
           "name": "events_application_idx",
-          "columns": [
-            "application_id",
-            "occurred_at"
-          ],
+          "columns": ["application_id", "occurred_at"],
           "isUnique": false
         }
       },
@@ -93,12 +90,8 @@
           "name": "application_events_application_id_applications_id_fk",
           "tableFrom": "application_events",
           "tableTo": "applications",
-          "columnsFrom": [
-            "application_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["application_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -177,9 +170,7 @@
       "indexes": {
         "applications_job_idx": {
           "name": "applications_job_idx",
-          "columns": [
-            "job_id"
-          ],
+          "columns": ["job_id"],
           "isUnique": false
         }
       },
@@ -188,12 +179,8 @@
           "name": "applications_job_id_jobs_id_fk",
           "tableFrom": "applications",
           "tableTo": "jobs",
-          "columnsFrom": [
-            "job_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["job_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -279,9 +266,7 @@
       "indexes": {
         "jobs_url_idx": {
           "name": "jobs_url_idx",
-          "columns": [
-            "url"
-          ],
+          "columns": ["url"],
           "isUnique": false
         }
       },
@@ -360,9 +345,7 @@
       "indexes": {
         "reminders_fire_idx": {
           "name": "reminders_fire_idx",
-          "columns": [
-            "fire_at"
-          ],
+          "columns": ["fire_at"],
           "isUnique": false
         }
       },
@@ -371,12 +354,8 @@
           "name": "reminders_application_id_applications_id_fk",
           "tableFrom": "reminders",
           "tableTo": "applications",
-          "columnsFrom": [
-            "application_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["application_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }

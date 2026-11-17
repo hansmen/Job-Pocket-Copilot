@@ -32,7 +32,15 @@ export const STATUS_LABELS_UK: Record<ApplicationStatus, string> = {
 /** Allowed transitions: the key is the current status, the value is the allowed next statuses. */
 const TRANSITIONS: Record<ApplicationStatus, readonly ApplicationStatus[]> = {
   saved: ['applied', 'withdrawn'],
-  applied: ['hr_screen', 'tech_interview', 'test_task', 'offer', 'rejected', 'ghosted', 'withdrawn'],
+  applied: [
+    'hr_screen',
+    'tech_interview',
+    'test_task',
+    'offer',
+    'rejected',
+    'ghosted',
+    'withdrawn',
+  ],
   hr_screen: ['tech_interview', 'test_task', 'offer', 'rejected', 'ghosted', 'withdrawn'],
   tech_interview: ['hr_screen', 'test_task', 'offer', 'rejected', 'ghosted', 'withdrawn'],
   test_task: ['hr_screen', 'tech_interview', 'offer', 'rejected', 'ghosted', 'withdrawn'],

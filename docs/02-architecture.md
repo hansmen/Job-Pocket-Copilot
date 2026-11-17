@@ -10,18 +10,18 @@ Clipper / bot --+            |                  +--> S3-compatible storage (file
 
 ## Stack
 
-| Layer | Choice | Note |
-| --- | --- | --- |
-| Monorepo | pnpm + Turborepo | one repo, shared types |
-| Mobile | Expo (dev builds + EAS), TS, Expo Router | the share extension does not work in Expo Go |
-| Client data | expo-sqlite + Drizzle | behind `JobRepository` |
-| API | NestJS + OpenAPI | clients are generated from OpenAPI |
-| DB | PostgreSQL + Prisma | `apps/api/prisma/schema.prisma` |
-| Auth | Firebase Auth | a guard verifies the ID token |
-| Background jobs | pg-boss | no Redis needed |
-| AI | `LlmClient` + zod structured output | provider is swappable |
-| Payments (Stage 4) | RevenueCat (mobile), Stripe (web) | entitlements live on the backend |
-| Quality | Sentry, PostHog, GitHub Actions | |
+| Layer              | Choice                                   | Note                                         |
+| ------------------ | ---------------------------------------- | -------------------------------------------- |
+| Monorepo           | pnpm + Turborepo                         | one repo, shared types                       |
+| Mobile             | Expo (dev builds + EAS), TS, Expo Router | the share extension does not work in Expo Go |
+| Client data        | expo-sqlite + Drizzle                    | behind `JobRepository`                       |
+| API                | NestJS + OpenAPI                         | clients are generated from OpenAPI           |
+| DB                 | PostgreSQL + Prisma                      | `apps/api/prisma/schema.prisma`              |
+| Auth               | Firebase Auth                            | a guard verifies the ID token                |
+| Background jobs    | pg-boss                                  | no Redis needed                              |
+| AI                 | `LlmClient` + zod structured output      | provider is swappable                        |
+| Payments (Stage 4) | RevenueCat (mobile), Stripe (web)        | entitlements live on the backend             |
+| Quality            | Sentry, PostHog, GitHub Actions          |                                              |
 
 ## Three rules that make the backend reusable for the web
 

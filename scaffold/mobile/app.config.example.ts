@@ -25,7 +25,10 @@ const config: ExpoConfig = {
     [
       'expo-share-intent',
       {
-        iosActivationRules: { NSExtensionActivationSupportsWebURLWithMaxCount: 1, NSExtensionActivationSupportsText: true },
+        iosActivationRules: {
+          NSExtensionActivationSupportsWebURLWithMaxCount: 1,
+          NSExtensionActivationSupportsText: true,
+        },
         androidIntentFilters: ['text/*'],
       },
     ],

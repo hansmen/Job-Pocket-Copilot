@@ -20,19 +20,19 @@ A public story of the project helps both motivation and the job search. Keep the
 
 ## Episode plan
 
-| # | Topic | When to record |
-| --- | --- | --- |
-| 1 | Why I am building this, the plan and architecture overview | Day 1 |
-| 2 | The monorepo and shared logic with tests | Days 1-2 |
-| 3 | First run on a phone, the dev build | Day 2 |
-| 4 | The golden set and baseline parsing: why evals matter | Day 3 |
-| 5 | Conversations with users: what I learned | Day 4 |
-| 6 | Local DB and the repository | Days 5-6 |
-| 7 | Reminders and the iOS 64-notification limit | Day 9 |
-| 8 | The share extension | Days 10-11 |
-| 9 | A week of use: what annoyed me | Days 20-21 |
-| 10 | Stage 1 wrap-up and the Stage 2 decision | Day 21 |
-| 11+ | Backend, sync, AI parsing, evals, resume, interviews, web, launch | per stage |
+| #   | Topic                                                             | When to record |
+| --- | ----------------------------------------------------------------- | -------------- |
+| 1   | Why I am building this, the plan and architecture overview        | Day 1          |
+| 2   | The monorepo and shared logic with tests                          | Days 1-2       |
+| 3   | First run on a phone, the dev build                               | Day 2          |
+| 4   | The golden set and baseline parsing: why evals matter             | Day 3          |
+| 5   | Conversations with users: what I learned                          | Day 4          |
+| 6   | Local DB and the repository                                       | Days 5-6       |
+| 7   | Reminders and the iOS 64-notification limit                       | Day 9          |
+| 8   | The share extension                                               | Days 10-11     |
+| 9   | A week of use: what annoyed me                                    | Days 20-21     |
+| 10  | Stage 1 wrap-up and the Stage 2 decision                          | Day 21         |
+| 11+ | Backend, sync, AI parsing, evals, resume, interviews, web, launch | per stage      |
 
 ## Daily note template (2 minutes)
 

@@ -43,10 +43,12 @@ const labelNames = new Set(backlog.labels.map((l) => l.name));
 const problems = [];
 const seenTitles = new Set();
 for (const issue of backlog.issues) {
-  if (!issue.title || !issue.body) problems.push(`Issue without title/body: ${JSON.stringify(issue.title)}`);
+  if (!issue.title || !issue.body)
+    problems.push(`Issue without title/body: ${JSON.stringify(issue.title)}`);
   if (seenTitles.has(issue.title)) problems.push(`Duplicate issue title: ${issue.title}`);
   seenTitles.add(issue.title);
-  if (!milestoneTitles.has(issue.milestone)) problems.push(`Unknown milestone "${issue.milestone}" in "${issue.title}"`);
+  if (!milestoneTitles.has(issue.milestone))
+    problems.push(`Unknown milestone "${issue.milestone}" in "${issue.title}"`);
   for (const l of issue.labels ?? []) {
     if (!labelNames.has(l)) problems.push(`Unknown label "${l}" in "${issue.title}"`);
   }
@@ -56,7 +58,9 @@ if (problems.length > 0) {
   process.exit(1);
 }
 
-const issues = backlog.issues.filter((i) => args.stages.length === 0 || args.stages.includes(i.stage));
+const issues = backlog.issues.filter(
+  (i) => args.stages.length === 0 || args.stages.includes(i.stage),
+);
 const neededMilestones = new Set(issues.map((i) => i.milestone));
 
 console.log(
@@ -93,12 +97,21 @@ for (const l of backlog.labels) {
   gh(['label', 'create', l.name, '--color', l.color, ...repoArgs], { allowFail: true });
 }
 
-const existingMilestones = JSON.parse(gh(['api', `repos/${repoFull}/milestones?state=all&per_page=100`]));
+const existingMilestones = JSON.parse(
+  gh(['api', `repos/${repoFull}/milestones?state=all&per_page=100`]),
+);
 const milestoneByTitle = new Map(existingMilestones.map((m) => [m.title, m.number]));
 for (const m of backlog.milestones) {
   if (!neededMilestones.has(m.title) || milestoneByTitle.has(m.title)) continue;
   const created = JSON.parse(
-    gh(['api', `repos/${repoFull}/milestones`, '-f', `title=${m.title}`, '-f', `description=${m.description}`]),
+    gh([
+      'api',
+      `repos/${repoFull}/milestones`,
+      '-f',
+      `title=${m.title}`,
+      '-f',
+      `description=${m.description}`,
+    ]),
   );
   milestoneByTitle.set(m.title, created.number);
   console.log(`Created milestone: ${m.title}`);
@@ -117,7 +130,18 @@ for (const issue of issues) {
     continue;
   }
   const labelArgs = (issue.labels ?? []).flatMap((l) => ['--label', l]);
-  gh(['issue', 'create', '--title', issue.title, '--body', issue.body, '--milestone', issue.milestone, ...labelArgs, ...repoArgs]);
+  gh([
+    'issue',
+    'create',
+    '--title',
+    issue.title,
+    '--body',
+    issue.body,
+    '--milestone',
+    issue.milestone,
+    ...labelArgs,
+    ...repoArgs,
+  ]);
   created++;
   console.log(`Created: ${issue.title}`);
 }

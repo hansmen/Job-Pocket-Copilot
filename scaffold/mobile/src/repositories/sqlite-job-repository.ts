@@ -44,9 +44,7 @@ export class SqliteJobRepository implements JobRepository {
     return rows
       .map((r) => ({ job: r.jobs as Job, application: r.applications as Application }))
       .filter((r) => (filter?.status ? r.application.status === filter.status : true))
-      .filter((r) =>
-        q ? `${r.job.title} ${r.job.company}`.toLowerCase().includes(q) : true,
-      );
+      .filter((r) => (q ? `${r.job.title} ${r.job.company}`.toLowerCase().includes(q) : true));
   }
 
   async getJob(jobId: string): Promise<JobWithApplication | null> {
@@ -112,7 +110,10 @@ export class SqliteJobRepository implements JobRepository {
   async deleteJob(jobId: string): Promise<void> {
     const t = this.now();
     this.db.transaction((tx) => {
-      tx.update(applications).set({ deletedAt: t, updatedAt: t }).where(eq(applications.jobId, jobId)).run();
+      tx.update(applications)
+        .set({ deletedAt: t, updatedAt: t })
+        .where(eq(applications.jobId, jobId))
+        .run();
       tx.update(jobs).set({ deletedAt: t, updatedAt: t }).where(eq(jobs.id, jobId)).run();
     });
   }
@@ -181,7 +182,12 @@ export class SqliteJobRepository implements JobRepository {
     const rows = await this.db
       .select()
       .from(applicationEvents)
-      .where(and(eq(applicationEvents.applicationId, applicationId), isNull(applicationEvents.deletedAt)))
+      .where(
+        and(
+          eq(applicationEvents.applicationId, applicationId),
+          isNull(applicationEvents.deletedAt),
+        ),
+      )
       .orderBy(desc(applicationEvents.occurredAt));
     return rows as ApplicationEvent[];
   }
@@ -221,10 +227,16 @@ export class SqliteJobRepository implements JobRepository {
 
   async completeReminder(reminderId: string): Promise<void> {
     const t = this.now();
-    await this.db.update(reminders).set({ doneAt: t, updatedAt: t }).where(eq(reminders.id, reminderId));
+    await this.db
+      .update(reminders)
+      .set({ doneAt: t, updatedAt: t })
+      .where(eq(reminders.id, reminderId));
   }
 
-  async setReminderNotificationId(reminderId: string, notificationId: string | null): Promise<void> {
+  async setReminderNotificationId(
+    reminderId: string,
+    notificationId: string | null,
+  ): Promise<void> {
     await this.db
       .update(reminders)
       .set({ notificationId, updatedAt: this.now() })
@@ -260,7 +272,11 @@ export class SqliteJobRepository implements JobRepository {
       const done = await this.db
         .insert(jobs)
         .values(row)
-        .onConflictDoUpdate({ target: jobs.id, set: row, setWhere: lt(jobs.updatedAt, row.updatedAt) })
+        .onConflictDoUpdate({
+          target: jobs.id,
+          set: row,
+          setWhere: lt(jobs.updatedAt, row.updatedAt),
+        })
         .returning({ id: jobs.id });
       done.length ? result.jobs++ : result.skipped++;
     }

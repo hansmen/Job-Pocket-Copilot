@@ -2,13 +2,13 @@
 
 ## Data
 
-| What | Where it is stored | Note |
-| --- | --- | --- |
-| Jobs, applications, notes | locally (SQLite); from Stage 2 also the server | export and deletion from the first release |
-| Resume / profile | server (Stage 2) | contents are not logged |
-| Screenshots, files | S3-compatible storage, signed URLs | deleted with the account |
-| Interview audio (Stage 3) | not stored by default | we keep the transcript; audio only with separate consent |
-| AI requests | AI provider | check its retention / training-on-data policy before launch |
+| What                      | Where it is stored                             | Note                                                        |
+| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
+| Jobs, applications, notes | locally (SQLite); from Stage 2 also the server | export and deletion from the first release                  |
+| Resume / profile          | server (Stage 2)                               | contents are not logged                                     |
+| Screenshots, files        | S3-compatible storage, signed URLs             | deleted with the account                                    |
+| Interview audio (Stage 3) | not stored by default                          | we keep the transcript; audio only with separate consent    |
+| AI requests               | AI provider                                    | check its retention / training-on-data policy before launch |
 
 ## Rules
 

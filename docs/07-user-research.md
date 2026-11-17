@@ -36,8 +36,8 @@ Tool: Tally / Carrd / Framer. Do not write your own backend at this stage.
 
 ## Decisions based on results
 
-| Signal | What we do |
-| --- | --- |
-| Pain confirmed in 6+ of 10 and some willingness to pay | proceed to Stage 2 as planned |
-| Pain exists but elsewhere (e.g. resumes or interviews) | change the Stage 2 priority |
-| Pain is weak | keep it as a personal tool and learning project; do not scale it |
+| Signal                                                 | What we do                                                       |
+| ------------------------------------------------------ | ---------------------------------------------------------------- |
+| Pain confirmed in 6+ of 10 and some willingness to pay | proceed to Stage 2 as planned                                    |
+| Pain exists but elsewhere (e.g. resumes or interviews) | change the Stage 2 priority                                      |
+| Pain is weak                                           | keep it as a personal tool and learning project; do not scale it |

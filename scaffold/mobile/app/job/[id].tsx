@@ -67,7 +67,13 @@ export default function JobDetailsScreen() {
       </View>
 
       <Text style={styles.section}>Нотатки та історія</Text>
-      <TextInput style={styles.input} placeholder="Додати нотатку" value={note} onChangeText={setNote} onSubmitEditing={addNote} />
+      <TextInput
+        style={styles.input}
+        placeholder="Додати нотатку"
+        value={note}
+        onChangeText={setNote}
+        onSubmitEditing={addNote}
+      />
       {events.map((e) => (
         <View key={e.id} style={styles.event}>
           <Text style={styles.eventTime}>{new Date(e.occurredAt).toLocaleString()}</Text>
@@ -88,7 +94,13 @@ const styles = StyleSheet.create({
   company: { fontSize: 16, color: '#444' },
   status: { marginTop: 8, fontWeight: '600' },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 8 },
-  chip: { borderWidth: 1, borderColor: '#2563eb', borderRadius: 16, paddingHorizontal: 12, paddingVertical: 6 },
+  chip: {
+    borderWidth: 1,
+    borderColor: '#2563eb',
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
   section: { marginTop: 16, fontSize: 16, fontWeight: '600' },
   input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 10 },
   event: { paddingVertical: 6, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#ddd' },

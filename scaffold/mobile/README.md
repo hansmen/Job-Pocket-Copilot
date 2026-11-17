@@ -14,15 +14,15 @@ Read it before running: it deletes the demo code of the Expo template (`app/`, `
 
 ## What is in here
 
-| Path | Purpose |
-| --- | --- |
-| `src/db/schema.ts`, `src/db/client.ts` | Drizzle schema (UUIDv7 ids, epoch-ms times, soft delete) and the SQLite client |
-| `src/repositories/sqlite-job-repository.ts` | `JobRepository` implementation on SQLite |
-| `src/services/follow-ups.ts` | creates or closes follow-up reminders when a status changes |
-| `src/notifications/schedule.ts` | permission flow and rescheduling that respects the iOS ~64 notification limit |
-| `src/repo-context.tsx` | provides the repository to screens (swap SQLite for the API in Stage 2 without touching screens) |
-| `app/` | Expo Router screens: job list, add form, job details |
-| `app.config.example.ts` | example Expo config with the notification and share-intent plugins |
+| Path                                        | Purpose                                                                                          |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `src/db/schema.ts`, `src/db/client.ts`      | Drizzle schema (UUIDv7 ids, epoch-ms times, soft delete) and the SQLite client                   |
+| `src/repositories/sqlite-job-repository.ts` | `JobRepository` implementation on SQLite                                                         |
+| `src/services/follow-ups.ts`                | creates or closes follow-up reminders when a status changes                                      |
+| `src/notifications/schedule.ts`             | permission flow and rescheduling that respects the iOS ~64 notification limit                    |
+| `src/repo-context.tsx`                      | provides the repository to screens (swap SQLite for the API in Stage 2 without touching screens) |
+| `app/`                                      | Expo Router screens: job list, add form, job details                                             |
+| `app.config.example.ts`                     | example Expo config with the notification and share-intent plugins                               |
 
 ## What is not verified
 

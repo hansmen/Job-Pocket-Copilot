@@ -33,13 +33,13 @@ The first hour of Day 1. Do not improvise, just follow the list.
 
 ## 4. What is already in the repository
 
-| Part | Status |
-| --- | --- |
-| `packages/shared` | written, 28 tests pass |
-| `golden-set/` | 8 synthetic postings and `eval.mjs`; baseline score 0.774 |
+| Part                                         | Status                                                                 |
+| -------------------------------------------- | ---------------------------------------------------------------------- |
+| `packages/shared`                            | written, 28 tests pass                                                 |
+| `golden-set/`                                | 8 synthetic postings and `eval.mjs`; baseline score 0.774              |
 | `scripts/create-issues.mjs` + `backlog.json` | 37 backlog items; validated and dry-run tested, not run against GitHub |
-| `apps/api` | skeleton, never run (needs `pnpm install` and Postgres) |
-| `scaffold/mobile` | starter code, never run |
-| CI, issue/PR templates, `.claude/commands` | ready |
+| `apps/api`                                   | skeleton, never run (needs `pnpm install` and Postgres)                |
+| `scaffold/mobile`                            | starter code, never run                                                |
+| CI, issue/PR templates, `.claude/commands`   | ready                                                                  |
 
 See [10-known-gaps.md](10-known-gaps.md) for exactly what is unverified.

@@ -3,6 +3,7 @@
 Use this file to track milestones and keep a simple status view of the project. Update checkbox states as work moves forward.
 
 ## Status legend
+
 - [ ] Not started
 - [~] In progress
 - [x] Done
@@ -13,6 +14,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 ## Current status
 
 ### Stage 0: foundation
+
 - [x] Day 1. Repository and environment
   - Repo is initialized and working
   - PNPM toolchain enabled in the current session
@@ -35,6 +37,7 @@ Use this file to track milestones and keep a simple status view of the project. 
   - Goal: 5+ messages, sketches, waitlist link live
 
 ### Stage 1: local MVP
+
 - [ ] Day 5. Database
 - [ ] Day 6. Repository
 - [ ] Day 7. List and add screens
@@ -49,6 +52,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 - [ ] Day 21. Stage 1 wrap-up
 
 ### Stage 2: backend and AI
+
 - [ ] API foundation
 - [ ] Sync
 - [ ] AI job parsing
@@ -56,12 +60,14 @@ Use this file to track milestones and keep a simple status view of the project. 
 - [ ] Resume tailoring
 
 ### Stage 3: interview prep
+
 - [ ] Week 9
 - [ ] Week 10
 - [ ] Week 11
 - [ ] Week 12
 
 ### Stage 4: web, integrations, launch
+
 - [ ] Week 13
 - [ ] Week 14
 - [ ] Week 15
@@ -73,6 +79,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 ## Weekly / session checklist
 
 ### This session
+
 - [x] Confirm roadmap day
 - [x] Install missing tooling
 - [x] Install repo dependencies
@@ -81,6 +88,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 - [x] Move to Day 2 tasks
 
 ### Next action items
+
 - [x] Bootstrap mobile app
 - [x] Review and fix `scripts/bootstrap-mobile.sh`
 - [x] Merge app config values and set the app identifier
@@ -93,6 +101,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 ---
 
 ## Notes
+
 - Day 1 is complete and satisfies the roadmap criterion.
 - Day 2 setup and bundle validation are complete, but the roadmap's real-phone criterion is still pending.
 - Continue Day 2 on macOS: build the dev app, launch it on the phone, and verify the empty Jobs list opens.

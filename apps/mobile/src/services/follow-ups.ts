@@ -1,9 +1,4 @@
-import {
-  computeFollowUpAt,
-  needsFollowUp,
-  type Application,
-  type JobRepository,
-} from '@jc/shared';
+import { computeFollowUpAt, needsFollowUp, type Application, type JobRepository } from '@jc/shared';
 
 /**
  * Scenario: after an application moves to a new status, create a follow-up reminder
@@ -28,6 +23,11 @@ export async function syncFollowUp(
   for (const r of open) await repo.completeReminder(r.id);
 
   const utcOffsetMinutes = -new Date(nowMs).getTimezoneOffset();
-  const fireAt = computeFollowUpAt(nowMs, { afterDays: 7, hourLocal: 10, utcOffsetMinutes, skipWeekends: true });
+  const fireAt = computeFollowUpAt(nowMs, {
+    afterDays: 7,
+    hourLocal: 10,
+    utcOffsetMinutes,
+    skipWeekends: true,
+  });
   await repo.addReminder({ applicationId: application.id, kind: 'follow_up', fireAt });
 }

@@ -4,8 +4,8 @@ Fill this in during the dogfooding week (Days 15-20) and keep it going afterward
 The Stage 2 scope is decided from this file, not from assumptions.
 
 | Date | Where (screen / step) | What annoyed me or was missing | Severity (1-3) | Seen again? |
-| --- | --- | --- | --- | --- |
-| | | | | |
+| ---- | --------------------- | ------------------------------ | -------------- | ----------- |
+|      |                       |                                |                |             |
 
 ## How to use it
 

@@ -34,13 +34,13 @@ node golden-set/eval.mjs        # baseline parser score on the golden set (0.774
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `pnpm lint` / `typecheck` / `test` | checks across the monorepo |
-| `pnpm db:up` / `db:down` | Postgres in Docker |
-| `pnpm issues:dry` / `pnpm issues` | preview / create GitHub issues from `scripts/backlog.json` (needs the `gh` CLI) |
-| `./scripts/bootstrap-mobile.sh` | create `apps/mobile` and overlay the scaffold |
-| `node golden-set/eval.mjs` | score a parser against the golden set |
+| Command                            | What it does                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------------- |
+| `pnpm lint` / `typecheck` / `test` | checks across the monorepo                                                      |
+| `pnpm db:up` / `db:down`           | Postgres in Docker                                                              |
+| `pnpm issues:dry` / `pnpm issues`  | preview / create GitHub issues from `scripts/backlog.json` (needs the `gh` CLI) |
+| `./scripts/bootstrap-mobile.sh`    | create `apps/mobile` and overlay the scaffold                                   |
+| `node golden-set/eval.mjs`         | score a parser against the golden set                                           |
 
 ## Principles
 

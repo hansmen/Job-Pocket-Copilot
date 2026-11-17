@@ -28,7 +28,11 @@ export default function AddJobScreen() {
       const existing = (await repo.listJobs()).find((j) => j.job.url === normalized);
       if (existing) {
         Alert.alert('Така вакансія вже є', existing.job.title, [
-          { text: 'Відкрити', onPress: () => router.replace({ pathname: '/job/[id]', params: { id: existing.job.id } }) },
+          {
+            text: 'Відкрити',
+            onPress: () =>
+              router.replace({ pathname: '/job/[id]', params: { id: existing.job.id } }),
+          },
           { text: 'Скасувати', style: 'cancel' },
         ]);
         return;
@@ -40,9 +44,26 @@ export default function AddJobScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-      <TextInput style={styles.input} placeholder="Посилання" value={url} onChangeText={setUrl} autoCapitalize="none" keyboardType="url" />
-      <TextInput style={styles.input} placeholder="Назва вакансії" value={title} onChangeText={setTitle} />
-      <TextInput style={styles.input} placeholder="Компанія" value={company} onChangeText={setCompany} />
+      <TextInput
+        style={styles.input}
+        placeholder="Посилання"
+        value={url}
+        onChangeText={setUrl}
+        autoCapitalize="none"
+        keyboardType="url"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Назва вакансії"
+        value={title}
+        onChangeText={setTitle}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Компанія"
+        value={company}
+        onChangeText={setCompany}
+      />
       <TextInput
         style={[styles.input, styles.multiline]}
         placeholder="Текст вакансії (вставити)"

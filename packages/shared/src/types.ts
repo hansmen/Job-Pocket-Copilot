@@ -50,11 +50,7 @@ export interface Application extends SyncFields {
 }
 
 export type ApplicationEventType =
-  | 'status_change'
-  | 'note'
-  | 'follow_up_sent'
-  | 'interview'
-  | 'other';
+  'status_change' | 'note' | 'follow_up_sent' | 'interview' | 'other';
 
 export interface ApplicationEvent extends SyncFields {
   id: string;

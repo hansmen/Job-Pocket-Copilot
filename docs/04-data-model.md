@@ -3,19 +3,19 @@
 Source of truth for shape: `packages/shared/src/types.ts` (interfaces) and `schemas.ts` (zod). Server: `apps/api/prisma/schema.prisma`.
 Mobile: `scaffold/mobile/src/db/schema.ts` (Drizzle).
 
-| Entity | Key fields | Stage |
-| --- | --- | --- |
-| Job | id, url, company, title, rawText, parsed (JSON), parserVersion | 1 (parsed from 2) |
-| Application | id, jobId, status, appliedAt, nextFollowUpAt, resumeVersionId | 1 |
-| ApplicationEvent | id, applicationId, type, fromStatus, toStatus, note, occurredAt | 1 |
-| Reminder | id, applicationId, kind, fireAt, notificationId, doneAt | 1 |
-| User | id, authUid, locale, plan | 2 |
-| Profile | id, userId, data (structured resume), sourceFileId | 2 |
-| ResumeVersion | id, profileId, jobId, changes (diff), exportedFileId | 2 |
-| FileAsset | id, userId, kind, storageKey | 2 |
-| InterviewSession / InterviewTurn | session, question, answer, feedback (JSON) | 3 |
-| SkillGap | userId, skill, evidence, lastSeenAt | 3 |
-| AiUsage | userId, feature, model, tokensIn/out, costUsd, cached | 2 |
+| Entity                           | Key fields                                                      | Stage             |
+| -------------------------------- | --------------------------------------------------------------- | ----------------- |
+| Job                              | id, url, company, title, rawText, parsed (JSON), parserVersion  | 1 (parsed from 2) |
+| Application                      | id, jobId, status, appliedAt, nextFollowUpAt, resumeVersionId   | 1                 |
+| ApplicationEvent                 | id, applicationId, type, fromStatus, toStatus, note, occurredAt | 1                 |
+| Reminder                         | id, applicationId, kind, fireAt, notificationId, doneAt         | 1                 |
+| User                             | id, authUid, locale, plan                                       | 2                 |
+| Profile                          | id, userId, data (structured resume), sourceFileId              | 2                 |
+| ResumeVersion                    | id, profileId, jobId, changes (diff), exportedFileId            | 2                 |
+| FileAsset                        | id, userId, kind, storageKey                                    | 2                 |
+| InterviewSession / InterviewTurn | session, question, answer, feedback (JSON)                      | 3                 |
+| SkillGap                         | userId, skill, evidence, lastSeenAt                             | 3                 |
+| AiUsage                          | userId, feature, model, tokensIn/out, costUsd, cached           | 2                 |
 
 `ResumeVersion`, `InterviewSession`, `InterviewTurn` and `SkillGap` are planned and not yet in the Prisma schema; add them in their stage.
 

@@ -44,10 +44,36 @@ function parseArgs(argv) {
 
 // ---------- Baseline parser (naive on purpose) ----------
 const TECH = [
-  'React Native', 'TypeScript', 'JavaScript', 'Expo', 'Redux', 'Zustand', 'GraphQL', 'Apollo',
-  'REST', 'Node.js', 'NestJS', 'PostgreSQL', 'Prisma', 'Firebase', 'Swift', 'Kotlin', 'AWS',
-  'Docker', 'Jest', 'Sentry', 'Next.js', 'React', 'Vue', 'Nuxt', 'Tailwind', 'Stripe', 'CI/CD',
-  'Python', 'Django', 'Figma',
+  'React Native',
+  'TypeScript',
+  'JavaScript',
+  'Expo',
+  'Redux',
+  'Zustand',
+  'GraphQL',
+  'Apollo',
+  'REST',
+  'Node.js',
+  'NestJS',
+  'PostgreSQL',
+  'Prisma',
+  'Firebase',
+  'Swift',
+  'Kotlin',
+  'AWS',
+  'Docker',
+  'Jest',
+  'Sentry',
+  'Next.js',
+  'React',
+  'Vue',
+  'Nuxt',
+  'Tailwind',
+  'Stripe',
+  'CI/CD',
+  'Python',
+  'Django',
+  'Figma',
 ];
 
 function escapeRegExp(s) {
@@ -76,7 +102,9 @@ export function baselineParse(text) {
   else if (/on-?site/.test(lower)) workMode = 'onsite';
 
   let salary = null;
-  const m = /(\$|usd|eur|uah|€)\s?([\d,]+)\s?[-–]\s?([\d,]+)\s*(?:per\s+)?(month|year)?/i.exec(text);
+  const m = /(\$|usd|eur|uah|€)\s?([\d,]+)\s?[-–]\s?([\d,]+)\s*(?:per\s+)?(month|year)?/i.exec(
+    text,
+  );
   if (m) {
     const cur = { $: 'USD', usd: 'USD', eur: 'EUR', '€': 'EUR', uah: 'UAH' }[m[1].toLowerCase()];
     salary = {
@@ -87,7 +115,9 @@ export function baselineParse(text) {
     };
   }
 
-  const stack = TECH.filter((t) => new RegExp(`(^|[^A-Za-z])${escapeRegExp(t)}([^A-Za-z]|$)`, 'i').test(text));
+  const stack = TECH.filter((t) =>
+    new RegExp(`(^|[^A-Za-z])${escapeRegExp(t)}([^A-Za-z]|$)`, 'i').test(text),
+  );
 
   return { title, company, seniority, workMode, salary, stack };
 }
@@ -102,7 +132,10 @@ function exact(a, b) {
 function salaryMatch(a, b) {
   if (!a && !b) return 1;
   if (!a || !b) return 0;
-  return a.min === b.min && a.max === b.max && norm(a.currency) === norm(b.currency) && norm(a.period) === norm(b.period)
+  return a.min === b.min &&
+    a.max === b.max &&
+    norm(a.currency) === norm(b.currency) &&
+    norm(a.period) === norm(b.period)
     ? 1
     : 0;
 }
@@ -148,7 +181,9 @@ async function main() {
     parserName = args.parser;
   }
 
-  const files = readdirSync(args.dir).filter((f) => f.endsWith('.json')).sort();
+  const files = readdirSync(args.dir)
+    .filter((f) => f.endsWith('.json'))
+    .sort();
   if (files.length === 0) {
     console.error(`No .json samples in ${args.dir}`);
     process.exit(2);
@@ -184,7 +219,11 @@ async function main() {
     const outFile = join(outDir, `${stamp}.json`);
     writeFileSync(
       outFile,
-      JSON.stringify({ parser: parserName, samples: rows.length, perField, overall, rows }, null, 2) + '\n',
+      JSON.stringify(
+        { parser: parserName, samples: rows.length, perField, overall, rows },
+        null,
+        2,
+      ) + '\n',
     );
     console.log(`Saved report: ${outFile}`);
   }

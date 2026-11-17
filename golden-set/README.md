@@ -42,11 +42,11 @@ The baseline currently scores **0.774** on the synthetic set (title 0.88, compan
 
 ## Metrics
 
-| Field | How it is scored |
-| --- | --- |
-| title, company, seniority, workMode | exact match after trim + lowercase |
-| salary | the whole object must match (`min`, `max`, `currency`, `period`), or both `null` |
-| stack | F1 between predicted and expected lists (case-insensitive) |
+| Field                               | How it is scored                                                                 |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| title, company, seniority, workMode | exact match after trim + lowercase                                               |
+| salary                              | the whole object must match (`min`, `max`, `currency`, `period`), or both `null` |
+| stack                               | F1 between predicted and expected lists (case-insensitive)                       |
 
 The overall score is the mean of the six field means.
 

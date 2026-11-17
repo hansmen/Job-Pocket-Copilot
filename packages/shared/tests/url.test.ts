@@ -17,16 +17,23 @@ test('keeps meaningful parameters and sorts them', () => {
 });
 
 test('adds https when there is no protocol', () => {
-  assert.equal(normalizeJobUrl('djinni.co/jobs/777-react-native/'), 'https://djinni.co/jobs/777-react-native');
+  assert.equal(
+    normalizeJobUrl('djinni.co/jobs/777-react-native/'),
+    'https://djinni.co/jobs/777-react-native',
+  );
 });
 
 test('LinkedIn is reduced to the canonical form by id', () => {
   assert.equal(
-    normalizeJobUrl('https://www.linkedin.com/jobs/view/senior-react-native-dev-at-acme-3912345678/?trackingId=abc&refId=def'),
+    normalizeJobUrl(
+      'https://www.linkedin.com/jobs/view/senior-react-native-dev-at-acme-3912345678/?trackingId=abc&refId=def',
+    ),
     'https://linkedin.com/jobs/view/3912345678',
   );
   assert.equal(
-    normalizeJobUrl('https://www.linkedin.com/jobs/collections/recommended/?currentJobId=3912345678'),
+    normalizeJobUrl(
+      'https://www.linkedin.com/jobs/collections/recommended/?currentJobId=3912345678',
+    ),
     'https://linkedin.com/jobs/view/3912345678',
   );
 });
