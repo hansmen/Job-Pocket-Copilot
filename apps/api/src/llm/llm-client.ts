@@ -1,18 +1,21 @@
-import type { z } from 'zod';
+import { z } from 'zod';
 
 /**
  * The single entry point for AI calls. Everything that knows about a specific provider lives behind this interface.
  * This gives: swapping providers without rewriting logic, substituting a Fake in tests, and unified cost accounting.
  */
 
-export interface LlmUsage {
-  model: string;
-  tokensIn: number;
-  tokensOut: number;
-  costUsd: number;
-}
+export const LlmUsageSchema = z.object({
+  model: z.string().min(1),
+  tokensIn: z.number().int().nonnegative(),
+  tokensOut: z.number().int().nonnegative(),
+  costUsd: z.number().finite().nonnegative(),
+});
+
+export type LlmUsage = z.infer<typeof LlmUsageSchema>;
 
 export interface StructuredRequest<T> {
+  userId: string;
   /** Feature name for accounting: parse_job, tailor_resume, ... */
   feature: string;
   /** Model tier: cheap for parsing, stronger for rewriting. */

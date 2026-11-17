@@ -11,6 +11,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AiUsageStatus {
+  pending
+  completed
+  failed
+}
+
 model User {
   id        String   @id
   authUid   String   @unique // uid from Firebase Auth
@@ -24,6 +30,7 @@ model User {
   profiles     Profile[]
   files        FileAsset[]
   aiUsage      AiUsage[]
+  aiCache      AiCache[]
 }
 
 model Job {
@@ -128,17 +135,32 @@ model FileAsset {
 
 // AI call accounting: limits and cost control.
 model AiUsage {
-  id        String   @id @default(uuid())
+  id        String        @id @default(uuid())
   userId    String
   feature   String // parse_job | tailor_resume | interview_feedback ...
   model     String
+  status    AiUsageStatus @default(pending)
   tokensIn  Int
   tokensOut Int
-  costUsd   Decimal  @db.Decimal(10, 6)
-  cached    Boolean  @default(false)
-  createdAt DateTime @default(now())
+  costUsd   Decimal       @db.Decimal(10, 6)
+  cached    Boolean       @default(false)
+  createdAt DateTime      @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, createdAt])
+}
+
+model AiCache {
+  userId        String
+  cacheKey      String
+  feature       String
+  parserVersion String
+  result        Json
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, cacheKey])
+  @@index([userId, feature, parserVersion])
 }

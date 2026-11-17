@@ -55,8 +55,9 @@ Feedback contains: strengths, 2-3 priority improvements, and a rewritten answer 
 
 ## Cost and limits
 
-- Account for every call in `AiUsage` (tokens, cost, `cached`).
-- Per-user daily call limit (`AI_DAILY_CALLS_PER_USER`) and monthly budget (`AI_MONTHLY_BUDGET_USD`).
+- Record provider calls and cache hits in `AiUsage` (tokens, cost, `cached`).
+- Enforce `AI_DAILY_CALLS_PER_USER` per user. `AI_MONTHLY_BUDGET_USD` is a service-wide stop for new calls based on reported spend; a final or concurrent provider call can exceed it because its actual cost is not known in advance.
+- `LLM_PROVIDER=fake` is a test stub: it makes no external request, costs nothing, and only returns queued test data. It does not parse real postings.
 - Pick the model by task: parsing is `fast`, rewriting and feedback are `strong`.
 - Voice (Stage 3): calculate the cost of a 15-minute session (STT + LLM + TTS) before launch and set a minutes limit.
 - Never log job or resume text; in logs keep only id, feature, model, tokens.
