@@ -64,7 +64,7 @@ The same items exist as GitHub issues: `pnpm issues:dry` previews them, `pnpm is
 
 ### Day 10. Share extension (iOS)
 - Configure `expo-share-intent`, accept a URL and text from Safari / LinkedIn / DOU.
-- **Done when:** Share -> Job Copilot from Safari opens the add form with the URL. **[risk]** needs a dev build, not Expo Go.
+- **Done when:** Share -> Job Pocket Copilot from Safari opens the add form with the URL. **[risk]** needs a dev build, not Expo Go.
 
 ### Day 11. Share (Android) and simple text parsing
 - Android intent filter; use the first line of shared text as the title suggestion.

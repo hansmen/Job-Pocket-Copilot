@@ -4,7 +4,7 @@ The first hour of Day 1. Do not improvise, just follow the list.
 
 ## 0. Before you start (15 min)
 
-- [ ] Create a **private** GitHub repository (`job-copilot`). Make it public later, once you are sure the history contains no secrets.
+- [ ] Create a **private** GitHub repository (`job-pocket-copilot`). Make it public later, once you are sure the history contains no secrets.
 - [ ] Check that you have: Node 22, pnpm (`corepack enable`), Git, Docker Desktop, Xcode + Command Line Tools, Android Studio.
 - [ ] Decide on an Apple Developer account: it is needed for TestFlight and for running the share extension on a physical iPhone.
       It costs roughly 99 USD per year (check the current price on Apple's site). You do not need it for Days 1-4.

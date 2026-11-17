@@ -10,7 +10,7 @@ async function bootstrap() {
   app.enableCors({ origin: true });
 
   const config = new DocumentBuilder()
-    .setTitle('Job Copilot API')
+    .setTitle('Job Pocket Copilot API')
     .setVersion('0.0.0')
     .addBearerAuth()
     .build();

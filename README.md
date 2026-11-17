@@ -1,4 +1,4 @@
-# Job Copilot
+# Job Pocket Copilot
 
 An AI-assisted job-search companion for developers: save job postings, get follow-up reminders, parse postings with AI,
 tailor your resume and prepare for interviews. A mobile app (Expo / React Native) and a web client share one API.

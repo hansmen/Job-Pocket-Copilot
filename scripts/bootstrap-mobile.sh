@@ -11,7 +11,7 @@ fi
 
 echo "The following will be done:"
 echo "  1) create an Expo project in apps/mobile (default template)"
-echo "  2) remove the template demo code (app, components, hooks, constants, scripts)"
+echo "  2) remove the template demo code (app, src, components, hooks, constants, scripts)"
 echo "  3) install dependencies with pnpm"
 echo "  4) copy scaffold/mobile/* and generate the first Drizzle migration"
 read -r -p "Continue? [y/N] " answer
@@ -20,7 +20,7 @@ read -r -p "Continue? [y/N] " answer
 pnpm create expo-app@latest apps/mobile --template default --no-install --yes
 
 cd apps/mobile
-rm -rf app components hooks constants scripts app-example
+rm -rf app src components hooks constants scripts app-example
 
 # Package name in monorepo format
 node -e "

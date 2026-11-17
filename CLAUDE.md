@@ -1,4 +1,4 @@
-# Job Copilot: context for Claude Code
+# Job Pocket Copilot: context for Claude Code
 
 Monorepo (pnpm + Turborepo, TypeScript). All documentation, comments, commit messages and identifiers are in English.
 Only end-user UI strings in the mobile app are Ukrainian (to be moved to i18n files on Day 14).

@@ -5,18 +5,18 @@ import type { ExpoConfig } from 'expo/config';
  * The share extension works only in a dev build (not in Expo Go).
  */
 const config: ExpoConfig = {
-  name: 'Job Copilot',
-  slug: 'job-copilot',
-  scheme: 'jobcopilot',
+  name: 'Job Pocket Copilot',
+  slug: 'job-pocket-copilot',
+  scheme: 'jobpocketcopilot',
   version: '0.1.0',
   orientation: 'portrait',
   userInterfaceStyle: 'automatic',
   ios: {
-    bundleIdentifier: 'com.example.jobcopilot', // CHANGE to your own
+    bundleIdentifier: 'com.example.jobpocketcopilot', // CHANGE to your own
     supportsTablet: false,
   },
   android: {
-    package: 'com.example.jobcopilot', // CHANGE to your own
+    package: 'com.example.jobpocketcopilot', // CHANGE to your own
   },
   plugins: [
     'expo-router',

@@ -1,8 +1,8 @@
 {
-  "name": "job-copilot",
+  "name": "job-pocket-copilot",
   "private": true,
   "version": "0.0.0",
-  "description": "AI-помічник пошуку роботи: мобільний застосунок + веб + спільний API",
+  "description": "AI Job Search Assistant: Mobile App + Web + Shared API",
   "packageManager": "pnpm@10.0.0",
   "engines": {
     "node": ">=22"
