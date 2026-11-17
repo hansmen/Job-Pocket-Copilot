@@ -11,10 +11,13 @@ import {
 import { useRepo } from '../../src/repo-context';
 import { rescheduleReminders } from '../../src/notifications/schedule';
 import { syncFollowUp } from '../../src/services/follow-ups';
+import { Screen } from '../../src/ui/screen';
+import { APP_COLORS } from '../../src/ui/theme';
 
 export default function JobDetailsScreen() {
   const repo = useRepo();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const colors = APP_COLORS;
   const [data, setData] = useState<JobWithApplication | null>(null);
   const [events, setEvents] = useState<ApplicationEvent[]>([]);
   const [note, setNote] = useState('');
@@ -31,7 +34,13 @@ export default function JobDetailsScreen() {
     }, [load]),
   );
 
-  if (!data) return <Text style={{ padding: 16 }}>Завантаження…</Text>;
+  if (!data) {
+    return (
+      <Screen>
+        <Text style={styles.loading}>Завантаження…</Text>
+      </Screen>
+    );
+  }
 
   async function move(to: ApplicationStatus) {
     if (!data) return;
@@ -53,45 +62,60 @@ export default function JobDetailsScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>{data.job.title}</Text>
-      <Text style={styles.company}>{data.job.company}</Text>
-      <Text style={styles.status}>Статус: {STATUS_LABELS_UK[data.application.status]}</Text>
+    <Screen>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={styles.container}
+      >
+        <Text style={[styles.title, { color: colors.text }]}>{data.job.title}</Text>
+        <Text style={[styles.company, { color: colors.secondaryText }]}>{data.job.company}</Text>
+        <Text style={[styles.status, { color: colors.text }]}>
+          Статус: {STATUS_LABELS_UK[data.application.status]}
+        </Text>
 
-      <View style={styles.chips}>
-        {nextStatuses(data.application.status).map((s) => (
-          <Pressable key={s} style={styles.chip} onPress={() => move(s)}>
-            <Text>{STATUS_LABELS_UK[s]}</Text>
-          </Pressable>
-        ))}
-      </View>
-
-      <Text style={styles.section}>Нотатки та історія</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Додати нотатку"
-        value={note}
-        onChangeText={setNote}
-        onSubmitEditing={addNote}
-      />
-      {events.map((e) => (
-        <View key={e.id} style={styles.event}>
-          <Text style={styles.eventTime}>{new Date(e.occurredAt).toLocaleString()}</Text>
-          <Text>
-            {e.type === 'status_change' && e.toStatus
-              ? `→ ${STATUS_LABELS_UK[e.toStatus]}${e.note ? `: ${e.note}` : ''}`
-              : (e.note ?? '')}
-          </Text>
+        <View style={styles.chips}>
+          {nextStatuses(data.application.status).map((s) => (
+            <Pressable key={s} style={styles.chip} onPress={() => move(s)}>
+              <Text style={{ color: colors.text }}>{STATUS_LABELS_UK[s]}</Text>
+            </Pressable>
+          ))}
         </View>
-      ))}
-    </ScrollView>
+
+        <Text style={[styles.section, { color: colors.text }]}>Нотатки та історія</Text>
+        <TextInput
+          style={[
+            styles.input,
+            { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text },
+          ]}
+          placeholder="Додати нотатку"
+          placeholderTextColor={colors.mutedText}
+          value={note}
+          onChangeText={setNote}
+          onSubmitEditing={addNote}
+          selectionColor={colors.primary}
+        />
+        {events.map((e) => (
+          <View key={e.id} style={[styles.event, { borderColor: colors.border }]}>
+            <Text style={[styles.eventTime, { color: colors.mutedText }]}>
+              {new Date(e.occurredAt).toLocaleString()}
+            </Text>
+            <Text style={{ color: colors.text }}>
+              {e.type === 'status_change' && e.toStatus
+                ? `→ ${STATUS_LABELS_UK[e.toStatus]}${e.note ? `: ${e.note}` : ''}`
+                : (e.note ?? '')}
+            </Text>
+          </View>
+        ))}
+      </ScrollView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  loading: { padding: 16, color: '#000000' },
   container: { padding: 16, gap: 8 },
   title: { fontSize: 20, fontWeight: '700' },
-  company: { fontSize: 16, color: '#444' },
+  company: { fontSize: 16 },
   status: { marginTop: 8, fontWeight: '600' },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 8 },
   chip: {
@@ -102,7 +126,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   section: { marginTop: 16, fontSize: 16, fontWeight: '600' },
-  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 10 },
-  event: { paddingVertical: 6, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#ddd' },
-  eventTime: { fontSize: 12, color: '#777' },
+  input: { borderWidth: 1, borderRadius: 8, padding: 10 },
+  event: { paddingVertical: 6, borderBottomWidth: StyleSheet.hairlineWidth },
+  eventTime: { fontSize: 12 },
 });

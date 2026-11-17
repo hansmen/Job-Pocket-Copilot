@@ -27,6 +27,8 @@ Run lint and typecheck before declaring any task done.
 
 - Use **Expo Router** for all navigation. Routes live in `src/app/` — every file there is a screen, `_layout.tsx` files define navigators. Keep non-route code (components, hooks, utils) outside `src/app/`.
 - Import `Link`, `router`, and `useLocalSearchParams` from `expo-router`.
+- Use the shared `Screen` for route content; native stack headers already handle the top safe area. For `Link asChild`, pass a flattened child style (`StyleSheet.flatten`) because Expo Router's `Slot` rejects style arrays.
+- Keep appearance fixed across devices: use `APP_COLORS`, do not derive colors from system appearance, and set explicit foreground/background/placeholder/selection colors on every `TextInput`.
 - Docs: https://docs.expo.dev/router/introduction.md
 
 ## Building with EAS

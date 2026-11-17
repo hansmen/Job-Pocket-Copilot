@@ -24,14 +24,20 @@ Use this file to track milestones and keep a simple status view of the project. 
   - Full validation sequence passed: `pnpm lint && pnpm typecheck && pnpm test`
   - CI now generates the Prisma client before typechecking; latest CI passed
   - Notes: non-blocking API import-type lint warnings remain
-- [!] Day 2. The mobile app on a phone — deferred
+- [x] Day 2. The mobile app on a phone
   - Expo project generated (SDK 58) and scaffold overlaid
   - Fixed the bootstrap script for Expo's `src/` starter layout
   - Initial Drizzle SQLite migration generated
   - Expo display name is Job Pocket Copilot; iOS and Android IDs are `com.jobpocketcopilot.mobile`
   - Expo development client installed
   - Android/iOS bundle exports and mobile TypeScript check passed
-  - Remaining: build on macOS and verify the empty Jobs list on a real phone
+  - On macOS 26.7.3 and Xcode 27.2, the iPhone 17 simulator build/install succeeded and the empty Jobs list was verified
+  - `pnpm --filter @jc/mobile exec expo install --check` passes
+  - A Personal Team development build installed and launched on the physical iPhone 11; Metro bundled the JavaScript app
+  - The temporary Personal Team build omitted push-notification and app-group entitlements, so reminders and the share extension are not verified; full-capability signing needs a team that supports them
+  - Safe-area spacing, list/header layout, and readable input text were confirmed on the physical device
+  - App appearance is now fixed to light across devices; the iPhone 17 simulator was rebuilt and visually verified
+  - A fresh physical-device build could not be signed because Xcode has no account or provisioning profiles for the configured team; the existing device build was not replaced
 - [!] Day 3. Monitoring and the golden set — deferred/partial
   - Synthetic baseline exists; Sentry, EAS profiles, and 10 hand-labeled private postings are not done
 - [ ] Day 4. User research and sketches
@@ -68,7 +74,7 @@ Use this file to track milestones and keep a simple status view of the project. 
 
 ### AI parsing handoff
 
-This is the current workstream. Mobile device testing and the earlier roadmap items are intentionally deferred; do not mark Day 2 or Day 3 complete.
+This is the AI parsing workstream. Day 2 mobile device testing is complete; Day 3 and the other earlier roadmap items remain deferred.
 
 #### Already present
 
@@ -152,17 +158,18 @@ This is the current workstream. Mobile device testing and the earlier roadmap it
 - [x] Bootstrap mobile app
 - [x] Review and fix `scripts/bootstrap-mobile.sh`
 - [x] Merge app config values and set the app identifier
-- [!] Build and run on a real phone
-  - Resume on macOS with Xcode and a phone/simulator; run `npx expo run:ios` from `apps/mobile`
+- [x] Build and run on a real phone
+  - The iPhone 11 development build launched and the user confirmed the updated layout
 - [x] Check whether Expo/phone build dependencies are available locally
-  - Git Bash is available; Android `adb` and iOS `xcrun` are not on this Windows machine
+  - macOS 26.7.3, Xcode 27.2, and iOS `xcrun` are available
 
 ---
 
 ## Notes
 
 - Day 1 is complete and satisfies the roadmap criterion.
-- Day 2 setup and bundle validation are complete, but the roadmap's real-phone criterion is still pending.
-- Current priority is Stage 2 AI job parsing; mobile, monitoring/golden-set collection, and sync work are deferred, not complete.
+- Day 2 is complete: the app runs on the phone and the user confirmed the layout and text visibility.
+- Day 3 is deferred/partial; Sentry, EAS profiles, and the private labeled golden set are still outstanding.
+- AI job parsing remains an incomplete, separately documented workstream; no new next task has been selected.
 - Before starting an AI task, inspect its current files and this handoff section; update statuses and validation results here as work progresses.
 - Keep this file updated after each milestone; use `[!]` for blocked or deferred items.

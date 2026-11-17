@@ -10,7 +10,8 @@ const config: ExpoConfig = {
   scheme: 'jobpocketcopilot',
   version: '0.1.0',
   orientation: 'portrait',
-  userInterfaceStyle: 'automatic',
+  userInterfaceStyle: 'light',
+  backgroundColor: '#ffffff',
   ios: {
     bundleIdentifier: 'com.example.jobpocketcopilot', // CHANGE to your own
     supportsTablet: false,
@@ -20,6 +21,7 @@ const config: ExpoConfig = {
   },
   plugins: [
     'expo-router',
+    ['expo-status-bar', { style: 'dark' }],
     'expo-sqlite',
     ['expo-notifications', { color: '#2563eb' }],
     [
