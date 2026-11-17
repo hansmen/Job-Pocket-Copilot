@@ -18,5 +18,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm format:check
       - run: pnpm lint
+      - run: pnpm --filter @jc/api prisma:generate
+        env:
+          DATABASE_URL: postgresql://jobcopilot:jobcopilot@localhost:5432/jobcopilot?schema=public
       - run: pnpm typecheck
       - run: pnpm test
